@@ -1,0 +1,16 @@
+.home { 
+    padding: 1rem 1.25rem;
+}
+
+.login-form .row { display: flex; gap: .5rem; align-items: center; margin-bottom: .5rem; }
+.login-form label { width: 90px; }
+.login-form input { padding: .4rem .6rem; }
+
+.toolbar { display: flex; gap: .5rem; margin: .75rem 0; }
+
+.cards { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.card { border: 1px solid #e5e7eb; border-radius: .75rem; padding: .9rem; background: #fff; }
+.card .top { display: flex; justify-content: space-between; align-items: baseline; }
+.card .issuer { opacity: .8; font-size: .9rem; }
+.card .num { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .05em; margin: .5rem 0; }
+.card .meta { display: flex; gap: 1rem; font-size: .9rem; opacity: .9; }
