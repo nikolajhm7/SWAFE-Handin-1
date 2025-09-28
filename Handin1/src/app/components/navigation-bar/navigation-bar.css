@@ -1,0 +1,37 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e293b;
+    padding: 1rem 2rem;
+}
+
+nav .logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+nav a.active {
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 0.25rem;
+}
