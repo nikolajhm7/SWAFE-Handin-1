@@ -1,1 +1,27 @@
-<p>credit-card-details works!</p>
+<h2 class="details">Credit Card Details</h2>
+
+@if (loading()) { <div>Loading…</div> }
+
+@if (error()) {
+  <div class="error">{{ error() }}</div>
+}
+
+@if (card(); as c) {
+    <ul>
+        <li class="card">
+            <div class="top">
+                <strong>{{ c.cardHolderName }}</strong>
+                <span class="issuer">{{ c.issuer }}</span>
+            </div>
+            <div class="num">{{ formatCardNumber(c.cardNumber) }}</div>
+            <div class="meta">
+                <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
+                <span>CSC: {{ c.cscCode }}</span>
+            </div>
+        </li>
+
+        <ul>
+            <app-transactions-list [transactions]="c.transactions" />
+        </ul>
+    </ul>
+}

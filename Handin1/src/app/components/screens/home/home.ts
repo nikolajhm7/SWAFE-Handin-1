@@ -2,10 +2,12 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { AuthService } from '../../../services/auth-service';
 import { CreditCardService } from '../../../services/credit-card-service';
 import { CreditCard } from '../../../interfaces/credit-card';
+import { CreditCardList } from '../../lists/credit-card-list/credit-card-list';
 
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [CreditCardList],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -65,8 +67,8 @@ export class Home implements OnInit {
     this.autoLoginAndLoad();
   }
 
-  maskNumber(n: number): string {
-    const s = String(n);
-    return s.replace(/\d(?=\d{4})/g, '•');
+  formatCardNumber(n: number): string {
+    const s = String(n).replace(/\D/g, '');
+    return s.replace(/(\d{4})(?=\d)/g, '$1 ');
   }
 }

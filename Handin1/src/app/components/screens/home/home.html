@@ -1,4 +1,4 @@
-<h2>Credit Cards</h2>
+<h2 class="home">Credit Cards</h2>
 
 @if (loading()) {
   <p>Loading…</p>
@@ -11,23 +11,5 @@
 }
 
 @if (cards(); as list) {
-  @if (list.length === 0) {
-    <p>No cards found.</p>
-  } @else {
-    <ul class="cards">
-      @for (c of list; track c.cardNumber) {
-        <li class="card">
-          <div class="top">
-            <strong>{{ c.cardHolderName }}</strong>
-            <span class="issuer">{{ c.issuer }}</span>
-          </div>
-          <div class="num">{{ maskNumber(c.cardNumber) }}</div>
-          <div class="meta">
-            <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
-            <span>CSC: {{ c.cscCode }}</span>
-          </div>
-        </li>
-      }
-    </ul>
-  }
+  <app-credit-card-list [cards]="list" />
 }

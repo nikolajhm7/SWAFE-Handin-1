@@ -1,3 +1,5 @@
+import { Transaction } from "./transaction";
+
 export interface CreditCard {
     cardNumber: number;
     cscCode: string;
@@ -5,4 +7,5 @@ export interface CreditCard {
     expirationMonth: number;
     expirationYear: number;
     issuer: string;
+    transactions: Transaction[];
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CreditCard } from "../interfaces/credit-card";
@@ -11,5 +11,9 @@ export class CreditCardService{
 
     getAll(): Observable<CreditCard[]>{
         return this.http.get<CreditCard[]>(`${API}/CreditCard`);
+    }
+
+    getByCardNumber(cardNumber: number): Observable<CreditCard>{
+        return this.http.get<CreditCard>(`${API}/CreditCard/cardnumber?cardnumber=${cardNumber}`)
     }
 }
