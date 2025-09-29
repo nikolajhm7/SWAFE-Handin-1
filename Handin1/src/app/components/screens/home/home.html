@@ -1,15 +1,16 @@
-<h2 class="home">Credit Cards</h2>
-
-@if (loading()) {
-  <p>Loading…</p>
-}
-
-@if (error(); as err) {
-  <p>{{ err }}</p>
-  <button (click)="autoLoginAndLoad()">Try again</button>
-  <button (click)="resetSessionAndRetry()">Reset session & retry</button>
-}
-
-@if (cards(); as list) {
-  <app-credit-card-list [cards]="list" />
-}
+<div class="home">
+  <h2>Credit Cards</h2>
+  <div class="home-container">
+    @if (loading()) { <div>Loading…</div> }
+    
+    @if (error(); as err) {
+      <p>{{ err }}</p>
+      <button (click)="autoLoginAndLoad()">Try again</button>
+      <button (click)="resetSessionAndRetry()">Reset session & retry</button>
+    }
+    
+    @if (cards(); as list) {
+      <app-credit-card-list [cards]="list" />
+    }
+  </div>
+</div>

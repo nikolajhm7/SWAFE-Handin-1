@@ -1,7 +1,7 @@
 import { Component, effect, inject, OnDestroy, signal } from '@angular/core';
 import { CreditCardService } from '../../../services/credit-card-service';
-import { CreditCard } from '../../../interfaces/credit-card';
-import { ActivatedRoute } from '@angular/router';
+import { CreditCard } from '../../../interfaces/credit-card/credit-card';
+import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { TransactionsList } from '../../lists/transactions-list/transactions-list';
@@ -15,6 +15,7 @@ import { TransactionsList } from '../../lists/transactions-list/transactions-lis
 })
 export class CreditCardDetails implements OnDestroy{
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private svc = inject(CreditCardService);
 
   cardNumberParam = toSignal(
@@ -47,6 +48,29 @@ export class CreditCardDetails implements OnDestroy{
           this.error.set('Failed to load card details.');
         }
       });
+    });
+  }
+
+  deleteCard() {
+    const c = this.card();
+    if (!c || this.removing()) return;
+
+    const ok = window.confirm('Are you sure you want to delete this credit card? This action cannot be undone.');
+    if (!ok) return;
+
+    this.removing.set(true);
+    this.error.set(null);
+
+    this.svc.delete(c.cardNumber).subscribe({
+      next: () => {
+        this.removing.set(false);
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err);
+        this.removing.set(false);
+        this.error.set('Failed to delete the credit card.');
+      }
     });
   }
 

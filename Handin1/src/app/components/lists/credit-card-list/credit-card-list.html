@@ -1,25 +1,27 @@
-@if (cards(); as list) {
-  @if (list.length === 0) {
-    <p>No cards found.</p>
-  } @else {
-    <ul class="cards">
-      @for (c of list; track c.cardNumber) {
-        <li class="card"
-            (click)="openDetails(c.cardNumber)"
-            role="button"
-            tabindex="0"
-            (keyup.enter)="openDetails(c.cardNumber)">
-          <div class="top">
-            <strong>{{ c.cardHolderName }}</strong>
-            <span class="issuer">{{ c.issuer }}</span>
-          </div>
-          <div class="num">{{ formatCardNumber(c.cardNumber) }}</div>
-          <div class="meta">
-            <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
-            <span>CSC: {{ c.cscCode }}</span>
-          </div>
-        </li>
-      }
-    </ul>
+<div>
+  @if (cards(); as list) {
+    @if (list.length === 0) {
+      <p>No cards found.</p>
+    } @else {
+      <ul class="cards">
+        @for (c of list; track c.cardNumber) {
+          <li class="card"
+              (click)="openDetails(c.cardNumber)"
+              role="button"
+              tabindex="0"
+              (keyup.enter)="openDetails(c.cardNumber)">
+            <div class="top">
+              <strong>{{ c.cardHolderName }}</strong>
+              <span class="issuer">{{ c.issuer }}</span>
+            </div>
+            <div class="num">{{ formatCardNumber(c.cardNumber) }}</div>
+            <div class="meta">
+              <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
+              <span>CSC: {{ c.cscCode }}</span>
+            </div>
+          </li>
+        }
+      </ul>
+    }
   }
-}
+</div>

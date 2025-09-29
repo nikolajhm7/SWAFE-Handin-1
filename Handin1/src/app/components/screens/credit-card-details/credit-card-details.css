@@ -1,9 +1,65 @@
 .details {
-    padding: 0rem 1.25rem 0rem 1.25rem;
+    padding: 1rem 1.25rem 0rem;
 }
 
-.card { border: 1px solid #1e293b7c; padding: .9rem; background: #fff; }
-.card .top { display: flex; justify-content: space-between; align-items: baseline; }
-.card .issuer { opacity: .8; font-size: .9rem; }
-.card .num { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .05em; margin: .5rem 0; }
-.card .meta { display: flex; gap: 1rem; font-size: .9rem; opacity: .9; }
+.details h2 {
+    padding-left: 1.25rem;
+}
+
+.details section {
+    background:#e6e6e6;
+}
+
+.details-container {
+    padding: 0rem 1.25rem;
+    gap: 1rem;
+}
+
+.card {
+    padding: 0rem;
+    background: #fff;
+}
+
+.card .top { 
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.card .top .delete {
+    color: red;
+    background-color: #fff;
+    padding: .5rem;
+    border-radius: 1rem;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+.card .top .delete:hover {
+    color: rgb(173, 0, 0);
+    background-color: #e3e3e3;
+    cursor: pointer;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+.card .issuer { 
+    opacity: .8;
+    font-size: .9rem;
+}
+.card .num { 
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: .05em;
+    margin: .5rem 0;
+}
+.card .meta { 
+    display: flex;
+    gap: 1rem;
+    font-size: .9rem;
+    opacity: .9;
+}

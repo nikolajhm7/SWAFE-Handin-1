@@ -1,14 +1,24 @@
 .transactions { 
     list-style: none; 
-    padding: 0; 
-    margin: 0; 
-    display: grid; 
-    gap: .75rem; 
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    padding: 0rem; 
+    display: grid;
 }
 
 .transaction { 
-    border: 1px solid #1e293b7c; 
-    border-radius: 0.5rem; 
-    padding: 0.75rem; 
+    border-bottom: 3px solid #1e293b;
+    padding: 0.9rem; 
+    background: #ffffff00;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+.transaction:hover{
+    color: white;
+    background-color: #1e293b;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
 }

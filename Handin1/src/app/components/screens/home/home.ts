@@ -1,7 +1,7 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { AuthService } from '../../../services/auth-service';
 import { CreditCardService } from '../../../services/credit-card-service';
-import { CreditCard } from '../../../interfaces/credit-card';
+import { CreditCard } from '../../../interfaces/credit-card/credit-card';
 import { CreditCardList } from '../../lists/credit-card-list/credit-card-list';
 
 @Component({

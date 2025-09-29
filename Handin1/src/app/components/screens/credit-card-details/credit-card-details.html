@@ -1,27 +1,29 @@
-<h2 class="details">Credit Card Details</h2>
-
-@if (loading()) { <div>Loading…</div> }
-
-@if (error()) {
-  <div class="error">{{ error() }}</div>
-}
-
-@if (card(); as c) {
-    <ul>
-        <li class="card">
-            <div class="top">
-                <strong>{{ c.cardHolderName }}</strong>
-                <span class="issuer">{{ c.issuer }}</span>
+<div class="details">
+    @if (loading()) { 
+        <h2>Loading...</h2> 
+    }
+    
+    @if (error()) {
+      <div class="error">{{ error() }}</div>
+    }
+    
+    @if (card(); as c) {
+        <h2>Credit Card Details for {{ c.cardHolderName }}</h2>
+        <div class="details-container">
+            <div class="card">
+                <div class="top">
+                    <span class="num">{{ formatCardNumber(c.cardNumber) }}</span>
+                    <span class="delete"
+                        (click)="deleteCard()">Delete this card</span>
+                </div>
+                <div class="meta">
+                    <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
+                    <span>CSC: {{ c.cscCode }}</span>
+                    <span class="issuer">Iss: {{ c.issuer }}</span>
+                </div>
             </div>
-            <div class="num">{{ formatCardNumber(c.cardNumber) }}</div>
-            <div class="meta">
-                <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
-                <span>CSC: {{ c.cscCode }}</span>
-            </div>
-        </li>
-
-        <ul>
+            <hr class="solid" />
             <app-transactions-list [transactions]="c.transactions" />
-        </ul>
-    </ul>
-}
+        </div>
+    }
+</div>

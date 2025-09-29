@@ -1,5 +1,5 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { CreditCard } from '../../../interfaces/credit-card';
+import { CreditCard } from '../../../interfaces/credit-card/credit-card';
 import { Router } from '@angular/router';
 
 @Component({

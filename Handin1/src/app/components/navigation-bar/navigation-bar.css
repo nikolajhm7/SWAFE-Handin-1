@@ -2,8 +2,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     background: #1e293b;
-    padding: 1rem 2rem;
+    padding: 1rem;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
 }
 
 nav .logo {
@@ -16,7 +22,7 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 1rem;
-    margin: 0;
+    margin: 0 2rem 0 0;
     padding: 0;
 }
 
