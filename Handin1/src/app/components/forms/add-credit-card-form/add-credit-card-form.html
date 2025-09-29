@@ -1,7 +1,6 @@
 <div class="add-credit-card">
   <h2>Add Credit Card</h2>
   <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="form">
-  
     <!-- card_number -->
     <div class="field">
       <label for="card_number">Card number *</label>
@@ -9,7 +8,8 @@
              formControlName="card_number"
              inputmode="numeric"
              autocomplete="off"
-             (input)="digitsOnly(f.card_number)" />
+             (input)="digitsOnly(f.card_number)"
+             placeholder="1234 5678 1234 5678" />
       @if (f.card_number.touched && f.card_number.invalid) {
         <small class="error">
           @if (f.card_number.errors?.['required']) { Card number is required. }
@@ -23,7 +23,7 @@
     <!-- cardholder_name -->
     <div class="field">
       <label for="cardholder_name">Cardholder name *</label>
-      <input id="cardholder_name" formControlName="cardholder_name" />
+      <input id="cardholder_name" formControlName="cardholder_name" placeholder="Name"/>
       @if (f.cardholder_name.touched && f.cardholder_name.invalid) {
         <small class="error">Cardholder name is required.</small>
       }
@@ -36,7 +36,8 @@
              formControlName="csc_code"
              inputmode="numeric"
              autocomplete="off"
-             (input)="digitsOnly(f.csc_code)" />
+             (input)="digitsOnly(f.csc_code)"
+             placeholder="123" />
       @if (f.csc_code.touched && f.csc_code.invalid) {
         <small class="error">
           @if (f.csc_code.errors?.['required']) { CSC code is required. }
@@ -53,7 +54,8 @@
              formControlName="expiration_month"
              inputmode="numeric"
              autocomplete="off"
-             (input)="digitsOnly(f.expiration_month)" />
+             (input)="digitsOnly(f.expiration_month)"
+             placeholder="1" />
       @if (f.expiration_month.touched && f.expiration_month.invalid) {
         <small class="error">
           @if (f.expiration_month.errors?.['required']) { Month is required. }
@@ -70,7 +72,8 @@
              formControlName="expiration_year"
              inputmode="numeric"
              autocomplete="off"
-             (input)="digitsOnly(f.expiration_year)" />
+             (input)="digitsOnly(f.expiration_year)"
+             placeholder="2025" />
       @if (f.expiration_year.touched && f.expiration_year.invalid) {
         <small class="error">
           @if (f.expiration_year.errors?.['required']) { Year is required. }
@@ -82,8 +85,10 @@
     <!-- issuer -->
     <div class="field">
       <label for="issuer">Issuer</label>
-      <input id="issuer" formControlName="issuer" placeholder="e.g., Visa, Mastercard, Amex" />
+      <input id="issuer" formControlName="issuer" placeholder="Visa, Mastercard, Amex..." />
     </div>
+
+    <h5>* required</h5>
   
     @if (form.errors?.['submit']) {
       <p class="error">{{ form.errors?.['submit'] }}</p>
