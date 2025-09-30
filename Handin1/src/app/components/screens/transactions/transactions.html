@@ -8,7 +8,7 @@
                 <input
                 type="text"
                 placeholder="e.g. 1234 56"
-                [value]="transactionsFilter()"
+                [value]="transactionsFilter() | cardNumber"
                 (input)="setFilter(($any($event.target).value))" />
             </label>
 
@@ -26,6 +26,9 @@
                 <button type="button" (click)="clearFilter()">Clear</button>
             }
         </section>
+
+        <hr class="solid"/>
+
         @if (loading()) { <div>Loading…</div> }
         
         @if (error(); as err) {

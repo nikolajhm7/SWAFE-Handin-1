@@ -2,16 +2,11 @@
     padding: 1rem 1.25rem 0rem;
 }
 
-.details h2 {
-    padding-left: 1.25rem;
-}
-
 .details section {
     background:#e6e6e6;
 }
 
 .details-container {
-    padding: 0rem 1.25rem;
     gap: 1rem;
 }
 

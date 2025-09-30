@@ -3,13 +3,12 @@ import { Transaction } from '../../../interfaces/credit-card/transaction';
 import { TransactionsService } from '../../../services/transactions-service';
 import { AuthService } from '../../../services/auth-service';
 import { TransactionsList } from '../../lists/transactions-list/transactions-list';
-import { DecimalPipe } from '@angular/common';
 import { CardNumberPipe } from '../../../pipes/card-number-pipe';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [TransactionsList, DecimalPipe, CardNumberPipe],
+  imports: [TransactionsList, CardNumberPipe],
   templateUrl: './transactions.html',
   styleUrl: './transactions.css'
 })

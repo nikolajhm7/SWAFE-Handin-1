@@ -12,7 +12,7 @@
         <div class="details-container">
             <div class="card">
                 <div class="top">
-                    <span class="num">{{ formatCardNumber(c.cardNumber) }}</span>
+                    <span class="num">{{ c.cardNumber | cardNumber }}</span>
                     <span class="delete"
                         (click)="deleteCard()">Delete this card</span>
                 </div>

@@ -5,11 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { TransactionsList } from '../../lists/transactions-list/transactions-list';
+import { CardNumberPipe } from '../../../pipes/card-number-pipe';
 
 @Component({
   selector: 'app-credit-card-details',
   standalone: true,
-  imports: [TransactionsList],
+  imports: [TransactionsList, CardNumberPipe],
   templateUrl: './credit-card-details.html',
   styleUrl: './credit-card-details.css'
 })

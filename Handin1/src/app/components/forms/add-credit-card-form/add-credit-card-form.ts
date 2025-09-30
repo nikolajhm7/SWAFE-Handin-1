@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CreditCardService } from '../../../services/credit-card-service';
 import { Router } from '@angular/router';
+import { CardNumberPipe } from '../../../pipes/card-number-pipe';
 
 // regex til at tjekke om en string kun indeholder tal
 const DIGITS = /^\d+$/;
@@ -9,7 +10,7 @@ const DIGITS = /^\d+$/;
 @Component({
   selector: 'app-add-credit-card-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CardNumberPipe],
   templateUrl: './add-credit-card-form.html',
   styleUrl: './add-credit-card-form.css'
 })
