@@ -8,7 +8,7 @@ import { TransactionsList } from '../../lists/transactions-list/transactions-lis
 import { CardNumberPipe } from '../../../pipes/card-number.pipe';
 import { ExpirationDatePipe } from '../../../pipes/expiration-date.pipe';
 import { TransactionsService } from '../../../services/transactions-service';
-import { Transaction } from '../../../interfaces/credit-card/transaction';
+import { Transaction } from '../../../interfaces/transaction/transaction';
 
 @Component({
   selector: 'app-credit-card-details',

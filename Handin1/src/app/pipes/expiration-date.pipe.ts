@@ -18,11 +18,11 @@ export class ExpirationDatePipe implements PipeTransform {
             return '';
         }
 
-        const mm = String(Math.min(Math.max(m, 1), 12)).padStart(2, '0'); // Clamp month between 1 and 12
+        const mm = String(Math.min(Math.max(m, 1), 12)).padStart(2, '0'); // Kun mellem 01-12
 
         let yy: string;
         if (fourDigitYear) {
-            const full = y < 100 ? 2000 + y : y; // Convert to four-digit year if needed
+            const full = y < 100 ? 2000 + y : y; // mulighed for at vise YYYY i stedet for YY
             yy = String(full);
         } else {
             yy = String(y % 100).padStart(2, '0');

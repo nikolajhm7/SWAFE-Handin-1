@@ -1,10 +1,10 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Transaction } from '../../../interfaces/credit-card/transaction';
+import { Transaction } from '../../../interfaces/transaction/transaction';
 import { TransactionsService } from '../../../services/transactions-service';
 import { AuthService } from '../../../services/auth-service';
 import { TransactionsList } from '../../lists/transactions-list/transactions-list';
 import { CardNumberPipe } from '../../../pipes/card-number.pipe';
-import { CreateTransaction } from '../../../interfaces/credit-card/create-transaction';
+import { CreateTransaction } from '../../../interfaces/transaction/create-transaction';
 import { CreditCardService } from '../../../services/credit-card-service';
 import { CreditCard } from '../../../interfaces/credit-card/credit-card';
 import { AddTransactionForm } from '../../forms/add-transaction-form/add-transaction-form';

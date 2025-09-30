@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Transaction } from '../../../interfaces/credit-card/transaction';
+import { Transaction } from '../../../interfaces/transaction/transaction';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { CardNumberPipe } from '../../../pipes/card-number.pipe';
 

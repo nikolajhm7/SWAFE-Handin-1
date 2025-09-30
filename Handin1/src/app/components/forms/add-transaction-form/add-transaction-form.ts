@@ -1,6 +1,6 @@
 import { Component, inject, Inject, input, output } from '@angular/core';
 import { CreditCard } from '../../../interfaces/credit-card/credit-card';
-import { CreateTransaction } from '../../../interfaces/credit-card/create-transaction';
+import { CreateTransaction } from '../../../interfaces/transaction/create-transaction';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CardNumberPipe } from '../../../pipes/card-number.pipe';
 

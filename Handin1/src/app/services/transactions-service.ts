@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Transaction } from "../interfaces/credit-card/transaction";
-import { CreateTransaction } from "../interfaces/credit-card/create-transaction";
+import { Transaction } from "../interfaces/transaction/transaction";
+import { CreateTransaction } from "../interfaces/transaction/create-transaction";
 
 const API = 'https://assignment1.swafe.dk/api';
 
