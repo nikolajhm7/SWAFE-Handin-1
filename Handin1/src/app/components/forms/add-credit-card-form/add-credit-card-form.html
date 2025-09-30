@@ -1,15 +1,16 @@
-<div class="add-credit-card">
-  <h2>Add Credit Card</h2>
-  <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="form">
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="form">
+  <fieldset>
+    <h3>Add Credit Card</h3>
+  
     <!-- card_number -->
     <div class="field">
       <label for="card_number">Card number *</label>
       <input id="card_number"
-             formControlName="card_number"
-             inputmode="numeric"
-             autocomplete="off"
-             (input)="digitsOnly(f.card_number)"
-             placeholder="1234 5678 1234 5678" />
+              formControlName="card_number"
+              inputmode="numeric"
+              autocomplete="off"
+              (input)="digitsOnly(f.card_number)"
+              placeholder="1234 5678 1234 5678" />
       @if (f.card_number.touched && f.card_number.invalid) {
         <small class="error">
           @if (f.card_number.errors?.['required']) { Card number is required. }
@@ -33,11 +34,11 @@
     <div class="field">
       <label for="csc_code">CSC code *</label>
       <input id="csc_code"
-             formControlName="csc_code"
-             inputmode="numeric"
-             autocomplete="off"
-             (input)="digitsOnly(f.csc_code)"
-             placeholder="123" />
+              formControlName="csc_code"
+              inputmode="numeric"
+              autocomplete="off"
+              (input)="digitsOnly(f.csc_code)"
+              placeholder="123" />
       @if (f.csc_code.touched && f.csc_code.invalid) {
         <small class="error">
           @if (f.csc_code.errors?.['required']) { CSC code is required. }
@@ -51,11 +52,11 @@
     <div class="field">
       <label for="expiration_month">Expiration month *</label>
       <input id="expiration_month"
-             formControlName="expiration_month"
-             inputmode="numeric"
-             autocomplete="off"
-             (input)="digitsOnly(f.expiration_month)"
-             placeholder="1" />
+              formControlName="expiration_month"
+              inputmode="numeric"
+              autocomplete="off"
+              (input)="digitsOnly(f.expiration_month)"
+              placeholder="1" />
       @if (f.expiration_month.touched && f.expiration_month.invalid) {
         <small class="error">
           @if (f.expiration_month.errors?.['required']) { Month is required. }
@@ -69,11 +70,11 @@
     <div class="field">
       <label for="expiration_year">Expiration year *</label>
       <input id="expiration_year"
-             formControlName="expiration_year"
-             inputmode="numeric"
-             autocomplete="off"
-             (input)="digitsOnly(f.expiration_year)"
-             placeholder="2025" />
+              formControlName="expiration_year"
+              inputmode="numeric"
+              autocomplete="off"
+              (input)="digitsOnly(f.expiration_year)"
+              placeholder="2025" />
       @if (f.expiration_year.touched && f.expiration_year.invalid) {
         <small class="error">
           @if (f.expiration_year.errors?.['required']) { Year is required. }
@@ -87,7 +88,7 @@
       <label for="issuer">Issuer</label>
       <input id="issuer" formControlName="issuer" placeholder="Visa, Mastercard, Amex..." />
     </div>
-
+  
     <h5>* required</h5>
   
     @if (form.errors?.['submit']) {
@@ -98,5 +99,5 @@
       <button type="submit" [disabled]="form.invalid">Add card</button>
       <a routerLink="/" class="button secondary">Cancel</a>
     </div>
-  </form>
-</div>
+  </fieldset>
+</form>

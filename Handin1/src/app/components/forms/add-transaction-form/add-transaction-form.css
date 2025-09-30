@@ -1,0 +1,79 @@
+.form { 
+    max-width: 520px; 
+    padding: 1rem;
+    border: 3px solid #1e293b;
+    background: #1e293b;
+    color: #fff;
+}
+
+.form h5 {
+    padding: 0.5rem;
+    margin: 0;
+    font-style: italic;
+}
+
+.form select {
+    padding: 1rem;
+    border-radius: .6rem;
+}
+
+.field { display: grid; gap: .35rem; margin-bottom: .9rem; }
+
+label { font-weight: 600; }
+input {
+    padding: .55rem .7rem;
+    border: 1px solid #e5e7eb;
+    border-radius: .6rem;
+}
+input.ng-touched.ng-invalid { border-color: #ef4444; }
+.error { color: #b91c1c; font-size: .85rem; }
+
+.actions { display: flex; gap: .5rem; margin-top: 1rem; }
+
+button, .button {
+    padding: .55rem .9rem;
+    border-radius: .6rem;
+    border: 1px solid transparent;
+    background: #0d131e;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+button:hover{
+    cursor: pointer;
+    background: #000000;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+.button.secondary {
+    background: #ff0000;
+    color: #ffffff;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+
+.button.secondary:hover {
+    cursor:pointer;
+    background: #800303;
+
+    transition: color, background;
+    transition-timing-function: ease-out;
+    transition-duration: 200ms;
+}
+button[disabled] { opacity: .6; cursor: not-allowed; }
+
+.collapsible-summary {
+    user-select: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}

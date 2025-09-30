@@ -1,0 +1,74 @@
+<details class="collapsible">
+  <summary class="collapsible-summary">
+    Add a Transaction
+  </summary>
+
+  <div class="collapsible-wrapper">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="tx-form">
+        <fieldset [disabled]="pending()">
+          <!-- F6.1.2 -->
+          <div class="field">
+            <label for="cardNumber">Credit card *</label>
+            <select id="cardNumber" formControlName="cardNumber">
+              <option value="" disabled selected>Select a card</option>
+              @if (cards(); as list) {
+                @for (c of list; track c.cardNumber) {
+                  <option [value]="c.cardNumber">{{ c.cardHolderName }} — {{ c.cardNumber | cardNumber }}</option>
+                }
+              }
+            </select>
+            @if (f.cardNumber.touched && f.cardNumber.invalid) {
+              <small class="error">Please select a credit card.</small>
+            }
+          </div>
+      
+          <!-- F6.1.3 + F6.1.4 -->
+          <div class="field">
+            <label for="amount">Amount *</label>
+            <input id="amount" formControlName="amount" placeholder="0.00" />
+            @if (f.amount.touched && f.amount.invalid) {
+              <small class="error">
+                @if (f.amount.errors?.['required']) { Amount is required. }
+                @if (f.amount.errors?.['pattern'])  { Amount must be a number. }
+              </small>
+            }
+          </div>
+      
+          <!-- F6.1.5 -->
+          <div class="field">
+            <label for="currencyCode">Currency *</label>
+            <select id="currencyCode" formControlName="currencyCode">
+              <option value="" disabled selected>Select currency</option>
+              @for (c of currencies; track c) {
+                <option [value]="c">{{ c }}</option>
+              }
+            </select>
+            @if (f.currencyCode.touched && f.currencyCode.invalid) {
+              <small class="error">Currency is required.</small>
+            }
+          </div>
+      
+          <!-- F6.1.6 -->
+          <div class="field">
+            <label for="transactionDate">Date *</label>
+            <input id="transactionDate" type="datetime-local" formControlName="transactionDate" />
+            @if (f.transactionDate.touched && f.transactionDate.invalid) {
+              <small class="error">Date is required.</small>
+            }
+          </div>
+      
+          <!-- Optional comment -->
+          <div class="field">
+            <label for="comment">Comment</label>
+            <input id="comment" type="text" formControlName="comment" placeholder="Optional note…" />
+          </div>
+      
+          <h5>* required</h5>  
+      
+          <div class="actions">
+            <button type="submit" [disabled]="form.invalid || pending()">Add transaction</button>
+          </div>
+        </fieldset>
+    </form>
+  </div>
+</details>

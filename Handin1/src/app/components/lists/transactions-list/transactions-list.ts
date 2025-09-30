@@ -1,7 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Transaction } from '../../../interfaces/credit-card/transaction';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { CardNumberPipe } from '../../../pipes/card-number-pipe';
+import { CardNumberPipe } from '../../../pipes/card-number.pipe';
 
 @Component({
   selector: 'app-transactions-list',
@@ -12,4 +12,17 @@ import { CardNumberPipe } from '../../../pipes/card-number-pipe';
 })
 export class TransactionsList {
   transactions = input<Transaction[] | null>(null);
+
+  deletingId = input<string | null>(null);
+
+  deleteTransaction = output<Transaction>();
+
+  onDeleteClicked(t: Transaction, ev?: Event){
+    ev?.stopPropagation();
+
+    if (!confirm('Delete transaction?')) return;
+
+    if (this.deletingId()) return;
+    this.deleteTransaction.emit(t);
+  }
 }

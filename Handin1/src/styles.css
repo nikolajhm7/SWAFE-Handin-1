@@ -36,3 +36,27 @@ hr.solid{
     box-shadow: #000000;
     padding: 0;
 }
+
+fieldset {
+    background-color: #1e293b;
+    border: none;
+    border-radius: .75rem;
+    color: white;
+}
+
+fieldset select {
+    padding: 0.5rem .5rem;
+    border-radius: .75rem;
+}
+
+h5 {
+    font-style: italic;
+}
+
+details {
+    background-color: #1e293b;
+    border-radius: .75rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}

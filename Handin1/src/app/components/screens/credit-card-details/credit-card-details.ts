@@ -1,16 +1,19 @@
-import { Component, effect, inject, OnDestroy, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnDestroy, signal } from '@angular/core';
 import { CreditCardService } from '../../../services/credit-card-service';
 import { CreditCard } from '../../../interfaces/credit-card/credit-card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { TransactionsList } from '../../lists/transactions-list/transactions-list';
-import { CardNumberPipe } from '../../../pipes/card-number-pipe';
+import { CardNumberPipe } from '../../../pipes/card-number.pipe';
+import { ExpirationDatePipe } from '../../../pipes/expiration-date.pipe';
+import { TransactionsService } from '../../../services/transactions-service';
+import { Transaction } from '../../../interfaces/credit-card/transaction';
 
 @Component({
   selector: 'app-credit-card-details',
   standalone: true,
-  imports: [TransactionsList, CardNumberPipe],
+  imports: [TransactionsList, CardNumberPipe, ExpirationDatePipe],
   templateUrl: './credit-card-details.html',
   styleUrl: './credit-card-details.css'
 })
@@ -18,6 +21,7 @@ export class CreditCardDetails implements OnDestroy{
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private svc = inject(CreditCardService);
+  private transactionsService = inject(TransactionsService);
 
   cardNumberParam = toSignal(
     this.route.paramMap.pipe(map(pm => (pm.get('cardNumber') ?? '').replace(/\s+/g, ''))),
@@ -29,6 +33,11 @@ export class CreditCardDetails implements OnDestroy{
   error = signal<string | null>(null);
 
   card = signal<CreditCard | null>(null);
+
+  transactionDeletingId = signal<string | null>(null);
+  cardTransactions = computed<Transaction[]>(() => this.card()?.transactions ?? []);
+
+  private transactionsSnapshot: Transaction[] | null = null;
 
   constructor() {
     effect(() => {
@@ -71,6 +80,35 @@ export class CreditCardDetails implements OnDestroy{
         console.error(err);
         this.removing.set(false);
         this.error.set('Failed to delete the credit card.');
+      }
+    });
+  }
+
+  onDeleteTransaction(t: Transaction) {
+    if (this.transactionDeletingId()) return;      // ensure one at a time
+    const current = this.card();
+    if (!current) return;
+
+    this.transactionDeletingId.set(t.uid);
+
+    // snapshot + optimistic remove
+    this.transactionsSnapshot = current.transactions;
+    this.card.update(c =>
+      c ? { ...c, transactions: c.transactions.filter(x => x.uid !== t.uid) } : c
+    );
+
+    this.transactionsService.deleteTransaction(t.uid).subscribe({
+      next: () => {
+        this.transactionDeletingId.set(null);
+        this.transactionsSnapshot = null;
+      },
+      error: (err) => {
+        console.error(err);
+        // rollback on failure
+        const snap = this.transactionsSnapshot;
+        this.card.update(c => (c && snap) ? { ...c, transactions: snap } : c);
+        this.transactionDeletingId.set(null);
+        this.error.set('Failed to delete transaction. See console.');
       }
     });
   }

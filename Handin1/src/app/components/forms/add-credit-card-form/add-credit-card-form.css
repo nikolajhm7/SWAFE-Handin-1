@@ -1,16 +1,5 @@
 .form { 
-  max-width: 520px; 
-  padding: 1rem;
-  border: 3px solid #1e293b;
-  border-radius: .25rem;
-  background: #1e293b;
   color: #fff;
-}
-
-.form h5 {
-  padding: 0.5rem;
-  margin: 0;
-  font-style: italic;
 }
 
 .field { display: grid; gap: .35rem; margin-bottom: .9rem; }

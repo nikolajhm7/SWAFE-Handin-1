@@ -2,6 +2,16 @@
     <h2>Transactions</h2>
     <div class="transactions-container">
 
+        <hr class="solid"/>
+    
+        <app-add-transaction-form
+            [cards]="cards()"
+            [pending]="adding()"
+            (create)="onCreateTransaction($event)">
+        </app-add-transaction-form>
+
+        <hr class="solid"/>
+
         <section class="toolbar">
             <label>
                 Filter by card number
@@ -27,8 +37,6 @@
             }
         </section>
 
-        <hr class="solid"/>
-
         @if (loading()) { <div>Loading…</div> }
         
         @if (error(); as err) {
@@ -36,7 +44,10 @@
         }
         
         @if (transactions(); as list) {
-        <app-transactions-list [transactions]="filteredTransactions()" />
+        <app-transactions-list 
+            [transactions]="filteredTransactions()"
+            [deletingId]="deletingId()"
+            (deleteTransaction)="onDeleteTransaction($event)" />
         }
     </div>
 </div>

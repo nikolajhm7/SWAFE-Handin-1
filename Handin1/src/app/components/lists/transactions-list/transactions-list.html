@@ -3,7 +3,7 @@
         @if (list.length === 0) {   
             <p>No transactions found.</p>
         } @else {
-            <ul class="transactions">
+            <section class="transactions">
                 @for (t of list; track t.uid) {
                     <li class="transaction">
                         <div class="top">
@@ -13,10 +13,17 @@
                             }
                             <small>{{ t.cardNumber | cardNumber }}</small>
                         </div>
-                        <small>{{ t.transactionDate | date:'medium' }}</small>
+                        <div class="bottom">
+                            <small>{{ t.transactionDate | date:'medium' }}</small>
+                            <button
+                                class="danger"
+                                aria-label="Delete Transaction"
+                                [disabled]="!!deletingId()"
+                                (click)="onDeleteClicked(t, $event)">Delete</button>
+                        </div>
                     </li>
                 }
-            </ul>
+            </section>
         }
     }
 </div>

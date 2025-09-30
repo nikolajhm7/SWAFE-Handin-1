@@ -1,12 +1,13 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { CreditCard } from '../../../interfaces/credit-card/credit-card';
 import { Router } from '@angular/router';
-import { CardNumberPipe } from '../../../pipes/card-number-pipe';
+import { CardNumberPipe } from '../../../pipes/card-number.pipe';
+import { ExpirationDatePipe } from '../../../pipes/expiration-date.pipe';
 
 @Component({
   selector: 'app-credit-card-list',
   standalone: true,
-  imports: [CardNumberPipe],
+  imports: [CardNumberPipe, ExpirationDatePipe],
   templateUrl: './credit-card-list.html',
   styleUrl: './credit-card-list.css'
 })

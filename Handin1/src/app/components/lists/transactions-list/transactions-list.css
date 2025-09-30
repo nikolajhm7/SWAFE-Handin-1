@@ -8,10 +8,24 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.transactions .top {
+.transaction .top {
     display: flex; 
     justify-content: space-between; 
     align-items: baseline;
+}
+
+.transaction .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-self: baseline;
+    padding: 0.25rem 0 0 0.5rem;
+}
+
+.transaction .bottom button {
+    background-color: rgb(189, 163, 163);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem;
 }
 
 .transaction { 

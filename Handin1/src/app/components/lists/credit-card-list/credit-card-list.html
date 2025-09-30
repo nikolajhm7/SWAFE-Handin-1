@@ -3,7 +3,7 @@
     @if (list.length === 0) {
       <p>No cards found.</p>
     } @else {
-      <ul class="cards">
+      <section class="cards">
         @for (c of list; track c.cardNumber) {
           <li class="card"
               (click)="openDetails(c.cardNumber)"
@@ -16,12 +16,12 @@
             </div>
             <div class="num">{{ c.cardNumber | cardNumber }}</div>
             <div class="meta">
-              <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
+              <span>Exp: {{ c.expirationMonth | expirationDate : c.expirationYear }}</span>
               <span>CSC: {{ c.cscCode }}</span>
             </div>
           </li>
         }
-      </ul>
+      </section>
     }
   }
 </div>
