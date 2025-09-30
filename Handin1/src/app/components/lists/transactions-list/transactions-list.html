@@ -9,8 +9,9 @@
                         <div class="top">
                             <strong>-{{ t.amount | number:'1.2-2' }} {{ t.currencyCode }}</strong>
                             @if (t.comment) {
-                                <span class> - {{t.comment}}</span>
+                                <span class>{{t.comment}}</span>
                             }
+                            <small>{{ t.cardNumber | cardNumber }}</small>
                         </div>
                         <small>{{ t.transactionDate | date:'medium' }}</small>
                     </li>

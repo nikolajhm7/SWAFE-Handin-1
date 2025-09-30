@@ -14,7 +14,7 @@
               <strong>{{ c.cardHolderName }}</strong>
               <span class="issuer">{{ c.issuer }}</span>
             </div>
-            <div class="num">{{ formatCardNumber(c.cardNumber) }}</div>
+            <div class="num">{{ c.cardNumber | cardNumber }}</div>
             <div class="meta">
               <span>Exp: {{ c.expirationMonth }}/{{ c.expirationYear }}</span>
               <span>CSC: {{ c.cscCode }}</span>

@@ -4,6 +4,16 @@
     display: grid;
 }
 
+.transactions small {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.transactions .top {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline;
+}
+
 .transaction { 
     border-bottom: 3px solid #1e293b;
     padding: 0.9rem; 

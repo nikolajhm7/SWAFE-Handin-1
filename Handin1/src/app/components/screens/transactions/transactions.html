@@ -1,1 +1,39 @@
-<p>Transactions works!</p>
+<div class="transactions">
+    <h2>Transactions</h2>
+    <div class="transactions-container">
+
+        <section class="toolbar">
+            <label>
+                Filter by card number
+                <input
+                type="text"
+                placeholder="e.g. 1234 56"
+                [value]="transactionsFilter()"
+                (input)="setFilter(($any($event.target).value))" />
+            </label>
+
+            <!-- Optional: quick-select dropdown populated from data -->
+            <select
+                [value]="transactionsFilter()"
+                (change)="setFilter(($any($event.target).value))">
+                <option value="">All cards</option>
+                @for (num of uniqueCardNumbers(); track num) {
+                <option [value]="num">{{ num | cardNumber }}</option>
+                }
+            </select>
+
+            @if (transactionsFilter()) {
+                <button type="button" (click)="clearFilter()">Clear</button>
+            }
+        </section>
+        @if (loading()) { <div>Loading…</div> }
+        
+        @if (error(); as err) {
+            <p>{{ err }}</p>
+        }
+        
+        @if (transactions(); as list) {
+        <app-transactions-list [transactions]="filteredTransactions()" />
+        }
+    </div>
+</div>

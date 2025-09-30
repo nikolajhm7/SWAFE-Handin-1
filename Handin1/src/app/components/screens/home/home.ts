@@ -26,25 +26,16 @@ export class Home implements OnInit {
   isAuthenticated = computed(() => this.authService.isAuthenticated);
 
   ngOnInit() {
-    this.autoLoginAndLoad();
-  }
-
-  autoLoginAndLoad() {
     this.loading.set(true);
     this.error.set(null);
 
-    if (!this.isAuthenticated()) {
-      this.authService.login(this.username, this.password).subscribe({
-        next: () => this.fetchCards(),
-        error: (err) => {
-          this.loading.set(false);
-          this.error.set('Auto-login failed. Check network / CORS.');
-          console.error(err);
-        }
-      });
-    } else {
-      this.fetchCards();
-    }
+    this.authService.autoLoginAndRun(
+      () => this.fetchCards(),
+      (err) => {
+        this.loading.set(false);
+        this.error.set('Auto-login failed.');
+      }
+    )
   }
 
   fetchCards() {
@@ -59,12 +50,6 @@ export class Home implements OnInit {
         console.error(err);
       }
     });
-  }
-
-  resetSessionAndRetry() {
-    this.authService.logout();
-    this.cards.set(null);
-    this.autoLoginAndLoad();
   }
 
   formatCardNumber(n: number): string {
