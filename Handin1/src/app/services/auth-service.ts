@@ -15,7 +15,10 @@ export class AuthService {
   defaultUsername = 'g10@bank.dk';
   defaultPassword = '1234';
 
-  login(username: string, password: string): Observable<string> {
+  login(
+    username: string = this.defaultUsername, 
+    password: string = this.defaultPassword
+  ): Observable<string> {
     const body: LoginRequest = { username, password };
 
     return this.http.post(`${API}/Login`, body, { responseType: 'text' }).pipe(
@@ -34,7 +37,7 @@ export class AuthService {
     username: string = this.defaultUsername,
     password: string = this.defaultPassword
   ) {
-    if (!this.isAuthenticated){
+    if (!this.isAuthenticated()){
       this.login(username, password).subscribe({
         next: () => onSuccess(),
         error: (err) => {

@@ -91,7 +91,6 @@ export class CreditCardDetails implements OnDestroy{
 
     this.transactionDeletingId.set(t.uid);
 
-    // snapshot + optimistic remove
     this.transactionsSnapshot = current.transactions;
     this.card.update(c =>
       c ? { ...c, transactions: c.transactions.filter(x => x.uid !== t.uid) } : c
