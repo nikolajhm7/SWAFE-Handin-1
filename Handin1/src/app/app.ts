@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavigationBar } from './components/navigation-bar/navigation-bar';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet, NavigationBar],
   templateUrl: './app.html',
